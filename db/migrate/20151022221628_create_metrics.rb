@@ -3,7 +3,7 @@ class CreateMetrics < ActiveRecord::Migration
     create_table :metrics do |t|
       t.integer :score
       t.string :comment
-      t.integer :criterium_id
+      t.integer :factor_id
       t.integer :option_id
 
       t.timestamps null: false
