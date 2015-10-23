@@ -1,0 +1,17 @@
+
+   	<h1>  Welcome, <%= @user.first_name %> <%= @user.last_name%></h1>
+    Age: <%= @user.age%><br>
+    Gender: <%= @user.gender%>
+    
+
+
+  	<div class ="decision-list">  
+      <h2> Current contemplating <%= @user.decisions.count%> decisions:</h2>
+        <% @user.decisions.each do |decision| %>
+          <p>
+          	<%= decision.name %>      
+            <i class="fa fa-trash-o"></i> 
+          <p>
+          <br>
+        <% end %>
+    </div>

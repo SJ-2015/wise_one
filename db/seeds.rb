@@ -1,4 +1,13 @@
-User.create(first_name:"Sharon", last_name:"Ji", email:"sharon.bowei.ji@gmail.com", age:25, password_digest:"password", gender:"female")
+# rake db:drop && rake db:create && rake db:migrate && rake db:seed
+
+User.create(first_name:"Sharon", last_name:"Ji", email:"sharon.bowei.ji@gmail.com", age:25, password:"password", gender:"female")
+
+# u = User.create(first_name:"Sharon", last_name:"Ji", email:"sharon.bowei.ji@gmail.com", age:25, password:"password", gender:"female")
+# ds = u.decisions.create([{name: "Where should I go for vacation?", user_id:1},{name: "What should I do after class ends", user_id:1},{name: "Dating in San Francisco", user_id:1}])
+
+# m = Metric.create({})
+# ds.factors.first << m
+# ds.options.first << m
 
 Decision.create([{name: "Where should I go for vacation?", user_id:1},{name: "What should I do after class ends", user_id:1},{name: "Dating in San Francisco", user_id:1}])
 
