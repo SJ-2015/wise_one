@@ -10,10 +10,14 @@ Rails.application.routes.draw do
 
  	 #decision routes
   get "/decisions/new", to: "decisions#new", as: "new_decision"
-  #delete '/decisions/:id', to: "decisions#destroy"
 
-
-	#resources
+	#resources for users
   resources :users
+
+	#resources for decisions, options and factors
+  resources :decisions do
+  	resources :options
+  	resources :factors
+  end
 
 end

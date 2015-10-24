@@ -11,8 +11,8 @@
         <ul class="nav navbar-nav navbar-right">
           <% if @current_user %>
               <li><%= link_to "Log out", sessions_path, method: :delete%></li>
-              <li><%=link_to "Edit Profile", user_path(1), method: :get%></li>
-              <li><%=link_to "My Decisions", user_path(1), method: :get%></li>
+              <li><%=link_to "Edit Profile", user_path(current_user), method: :get%></li>
+              <li><%=link_to "My Decisions", user_path(current_user), method: :get%></li>
 
           <% else %>
               <li><%= link_to "Login", sign_in_path, method: :get%></li>

@@ -1,13 +1,22 @@
 
-   	<h1>  Welcome, <%= @user.first_name %> <%= @user.last_name%></h1>
-    Age: <%= @user.age%><br>
-    Gender: <%= @user.gender%>
-    
+   	<div class ="user-profile-show">
+      <h1>  Welcome, <%= @user.first_name %> <%= @user.last_name%></h1>
+      Age: <%= @user.age%><br>
+      Gender: <%= @user.gender%>
+    <div>
+
+    <%= form_for @decision do |f| %>
+      <div>
+        <%= f.text_field :name, placeholder: "New decision" %>
+      </div>
+      <%= f.submit %>
+    <% end %>  
 
 
-  	<div class ="decision-list">  
+
+  	<div class="decision-list">  
       <h2> Current contemplating <%= @user.decisions.count%> decisions:</h2>
-        <% @user.decisions.each do |decision| %>
+        <% @user.decisions.reverse.each do |decision| %>
           <p>
           	<%= decision.name %>      
             <i class="fa fa-trash-o"></i> 
