@@ -5,6 +5,8 @@
       Gender: <%= @user.gender%>
     <div>
 
+    <hr>  
+
     <%= form_for @decision do |f| %>
       <div>
         <%= f.text_field :name, placeholder: "New decision" %>
@@ -18,9 +20,16 @@
       <h2> Current contemplating <%= @user.decisions.count%> decisions:</h2>
         <% @user.decisions.reverse.each do |decision| %>
           <p>
-          	<%= decision.name %>      
-            <i class="fa fa-trash-o"></i> 
-          <p>
+          	<div class="decision-name">
+              <a><%=link_to decision.name, decision_path(decision), 'data-no-turbolink' => true%></a>
+            </div>  
+
+            <i class="fa fa-trash-o"> </i>     
+            <%= link_to 'Delete', decision, method: :delete, data: { confirm: 'Are you sure you want to delete this decision?' }, :class => "btn btn-danger" %>
+
+            <i class="fa fa-pencil-square-o"></i>
+            <%= link_to "Edit Decision", edit_decision_path(decision), method: :get, :class => "btn btn-info" %>
+          </p>
           <br>
         <% end %>
     </div>

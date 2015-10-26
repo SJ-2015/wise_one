@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # before_action :new_decision, only: [:show, :index]
+
 	# grab the users
   def index
     @users = User.all
@@ -22,8 +24,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    
-    @decision = @user.decisions.new
+    @decision = Decision.new
     render :show
 
   end
