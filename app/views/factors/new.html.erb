@@ -1,0 +1,10 @@
+<div>
+   	<%= form_for @factor, url: decision_factors_path, method: "post" do  |f| %>
+      <div>
+        <%= f.text_field :name, placeholder: "New Factor" %>
+        <%= f.text_field :max_score, placeholder: "Weight Score" %>
+      </div>
+      <%= f.submit "Add Factor" %>
+    <% end %>  
+</div>
+
