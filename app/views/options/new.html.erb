@@ -1,0 +1,9 @@
+<div>
+   	<%= form_for @option, url: decision_options_path, method: "post" do  |f| %>
+      <div>
+        <%= f.text_field :name, placeholder: "New Option" %>
+      </div>
+      <%= f.submit "Add Option" %>
+    <% end %>  
+</div>
+

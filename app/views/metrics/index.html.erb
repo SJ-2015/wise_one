@@ -1,0 +1,30 @@
+<div class="page-container">
+	<h1> 
+		<%= @decision.user.first_name%>: 
+		<%= @decision.name%>
+	</h1>
+
+	<h3>What do you think of each option?</h3>
+		<% @factors.each do |factor| %>
+			<table class="table">
+		      <thead>
+			        <tr>
+			          <h4>
+			          	<%=factor.name %>  (Max Score of <%= factor.max_score%>) 
+			          </h4>
+			        </tr>
+			  </thead>
+			      <tbody>
+			      	<% @options.each do |option| %>
+			        <tr>
+			          <td><%= option.name %> </td>
+			          <td>Current Score: <%= option.metric(factor) %></td>
+			          <td>Edit Options</td>
+			        </tr>
+			        <% end %>
+			      </tbody>
+		    </table>
+		<% end	%>    
+
+
+</div>

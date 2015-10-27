@@ -5,11 +5,20 @@
 
 	<h3>What are your options?</h3>
 
+	<div>
+		 <h3>
+		 	<%= link_to '<i class="fa fa-plus-circle"></i>'.html_safe, new_decision_option_path(@decision), 'data-no-turbolink' => true %> 
+		 	<%= link_to 'Add New Option', new_decision_option_path(@decision), 'data-no-turbolink' => true %>
+		 	
+		 </h3>
+	<div>
+
+
 	<% @options.each do |option| %>
 		<div > 
 			<h3>
 				<div class="col-xs-8 factor-name">
-					<i class="fa fa-pencil-square-o"></i> 
+					<%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_decision_option_path(option.decision, option), method: :get %>
 					<%= option.name %>
 				</div>
 			
@@ -28,5 +37,17 @@
 				</div>
 			</h3>
 		</div>
-
 	<% end %>
+
+	<div class="col-xs-6 factor-scor">
+		<div>
+		 <%= link_to "Back: Factors", decision_path(@decision), method: :get, :class => "btn btn-info" %>
+		</div>
+	</div>
+
+	<div class="col-xs-6 factor-scor">
+		<div>
+		  <%= link_to "Next: Rank Options", decision_metrics_path(@decision), method: :get, :class => "btn btn-info" %>
+		</div>
+	</div>
+

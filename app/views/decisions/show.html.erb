@@ -21,13 +21,13 @@
 	       		<% @factors.each do |factor| %>
 	        		<div class="col-xs-8 factor-name">
 
-	            		<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, decision_factor_path(factor.decision, factor), method: :delete, data: { confirm: 'Are you sure you want to delete this factor?' }, class: 'btn btn-default' %>
+	            		<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, decision_factor_path(factor.decision, factor), method: :delete, data: { confirm: 'Are you sure you want to delete this factor?' } %>
 
 	        		<%= factor.name %> 
 	        		</div>
 	  			
 	  				<div class="col-xs-4 factor-scor"><%= factor.max_score %>
-			            <%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_decision_factor_path(factor.decision, factor), method: :get, :class => "btn btn-default" %>
+			            <%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_decision_factor_path(factor.decision, factor), method: :get %>
 	  				</div>
 		        <br>
 

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :decisions do
   	resources :options
   	resources :factors
+    resources :metrics   #metrics is OptionFactor joint table
   end
 
 end
