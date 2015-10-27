@@ -11,17 +11,16 @@ class DecisionsController < ApplicationController
 
   def destroy
     id = params[:id]
-    
     @decision = Decision.find(id)
     @decision.destroy
-
     redirect_to user_path(current_user)
-
   end 
 
   def show
     id = params[:id]
     @decision = Decision.find(id)
+
+    @user = @decision.user
     @factors = @decision.factors
     render :show
 
