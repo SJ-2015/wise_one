@@ -26,5 +26,21 @@
 		    </table>
 		<% end	%>    
 
+	<div class="col-xs-4 factor-scor">
+		<div>
+		 <%= link_to "Revise Factors", decision_path(@decision), method: :get, :class => "btn btn-info" %>
+		</div>
+	</div>
+	<div class="col-xs-4 factor-scor">
+		<div>
+		  <%= link_to "Revise Options", decision_options_path(@decision), method: :get, :class => "btn btn-info" %>
+		</div>
+	</div>	
+	<div class="col-xs-4 factor-scor">
+		<div>
+		  <%= link_to "Next: Results (not working yet)", decision_options_path(@decision), method: :get, :class => "btn btn-info" %>
+		</div>
+	</div>	
+
 
 </div>
