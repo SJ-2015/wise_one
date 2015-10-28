@@ -8,4 +8,7 @@ class Decision < ActiveRecord::Base
 	#https://github.com/nathanvda/cocoon/wiki/A-guide-to-doing-nested-model-forms
 
 
+	def find_winner
+		high_score = maximum(options.totalscore)
+	end
 end

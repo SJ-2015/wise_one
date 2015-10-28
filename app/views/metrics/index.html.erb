@@ -23,11 +23,10 @@
 			  </thead>
 			      <tbody>
 			      	<% @options.each do |option| %>
-			        <tr>
-			          <td><%= option.name %> </td>
-			          <td><%= option.metric(factor) %></td>
-			          <td>Edit Options</td>
-			        </tr>
+				        <tr>
+				          <td><%= option.name %> </td>
+				          <td><%= option.metric(factor) %></td>
+				        </tr>
 			        <% end %>
 			      </tbody>
 		    </table>
@@ -45,7 +44,7 @@
 	</div>	
 	<div class="col-xs-4 factor-scor">
 		<div>
-		  <%= link_to "Next: Results (not working yet)", decision_options_path(@decision), method: :get, :class => "btn btn-info" %>
+		  <%= link_to "Next: Results", result_summary_decision_path(@decision), method: :get, :class => "btn btn-info" %>
 		</div>
 	</div>	
 

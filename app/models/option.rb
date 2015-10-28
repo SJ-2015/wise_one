@@ -22,4 +22,9 @@ class Option < ActiveRecord::Base
 		metric ? metric.score : 0
 	end
 
+	def update_total_score
+		@total_score=metrics.sum(:score)
+	end	
+
+		
 end

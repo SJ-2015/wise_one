@@ -38,6 +38,8 @@ class DecisionsController < ApplicationController
 
     #get updated data
     updated_attributes = params.require(:decision).permit(:name, :descripton)
+
+
     if @decision.update_attributes(updated_attributes)
       redirect_to user_path(@user.id)
     else
@@ -56,13 +58,41 @@ class DecisionsController < ApplicationController
       decision_id = params[:id]
 
       @decision = Decision.find(decision_id)
-      
-      scores_hash = params[:metric]
-      @scores_array = scores_hash[:score]
 
-      binding.pry
+      @metric_ids = params[:metric][:id]
 
+      @score_array = params[:metric][:score]
+
+      #http://railscasts.com/episodes/165-edit-multiple?view=asciicast
+      @score_hash_array = []
+
+      @score_array.each { |score_value|
+        hash = {}
+        hash[:score] = score_value
+        @score_hash_array << hash
+      }
+
+      Metric.update(@metric_ids,@score_hash_array)
       redirect_to decision_metrics_path(decision_id)
+  end
+
+  def result_summary
+      id = params[:id]
+      @decision = Decision.find(id)
+
+      @user = @decision.user
+      @factors = @decision.factors
+      render :result_summary
+
+  end
+
+  def result_details
+      id = params[:id]
+      @decision = Decision.find(id)
+
+      @user = @decision.user
+      @factors = @decision.factors
+      render :result_details
   end
 
 end
