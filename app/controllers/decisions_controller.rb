@@ -38,7 +38,6 @@ class DecisionsController < ApplicationController
 
     #get updated data
     updated_attributes = params.require(:decision).permit(:name, :descripton)
-
     if @decision.update_attributes(updated_attributes)
       redirect_to user_path(@user.id)
     else
@@ -47,5 +46,34 @@ class DecisionsController < ApplicationController
   end
 
 
+  def change_score
+      id = params[:id]
+      @decision = Decision.find(params[:id])
+      render :change_score
+  end
+
+  def update_score
+      decision_id = params[:id]
+
+      @decision = Decision.find(decision_id)
+      
+      scores_hash = params[:metric]
+      @scores_array = scores_hash[:score]
+
+      binding.pry
+
+      redirect_to decision_metrics_path(decision_id)
+  end
 
 end
+
+
+
+
+
+
+
+
+
+
+

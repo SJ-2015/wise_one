@@ -1,0 +1,45 @@
+Can you hit this? this is the change_score edit_form
+
+<div class="page-container">
+	<h1> 
+		<%= @decision.user.first_name%>: 
+		<%= @decision.name%>
+	</h1>
+
+	<h3>What do you think of each option?</h3>
+
+
+	<%= form_for @decision, url: update_score_decision_path do |f| %>
+
+	    <%= f.text_area :name %>
+
+	    <% @decision.factors.each do |factor| %>
+	    	<table class="table">
+			      <thead>
+				        <tr>
+				          <h4>
+				          	<%=factor.name %>  (Max Score of <%= factor.max_score%>) 
+				          </h4>
+				        </tr>
+				  </thead>
+				  <tbody>
+				    	<% @decision.options.each do |option| %>
+				    		<tr>
+				    			<td><%= option.name %> </td>
+					    		<% option.metrics.each  do |metric| %>
+									<%= fields_for metric do |u| %>
+										<% if factor.id == metric.factor_id %>
+											<td><input type="number" value="<%=metric.score %>" name="metric[score][]" id="metric_score"></td>
+										   	<% end %>
+										<% end %>	
+								<% end %>
+							</tr>
+						<% end %>
+				   </tbody>
+			 </table>	  
+
+		<% end %>
+		 <%= f.submit "update decision" %>
+	<% end %>
+
+</div>

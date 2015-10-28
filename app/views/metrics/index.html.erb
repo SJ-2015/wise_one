@@ -4,7 +4,14 @@
 		<%= @decision.name%>
 	</h1>
 
+
 	<h3>What do you think of each option?</h3>
+
+	<div>
+		  <%= link_to '<i class="fa fa-pencil-square-o fa-3x"></i>'.html_safe, change_score_decision_path(@decision.id), method: :get %>
+	</div>
+
+
 		<% @factors.each do |factor| %>
 			<table class="table">
 		      <thead>

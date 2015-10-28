@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
 	#resources for decisions, options and factors
   resources :decisions do
+    member do
+      get 'change_score'
+      patch 'update_score'
+    end
   	resources :options
   	resources :factors
     resources :metrics   #metrics is OptionFactor joint table
