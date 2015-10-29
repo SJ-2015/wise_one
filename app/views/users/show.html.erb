@@ -9,9 +9,12 @@
 
     <%= form_for @decision do |f| %>
       <div>
-        <%= f.text_field :name, placeholder: "New decision" %>
+        <h3>
+            <%= f.text_field :name, placeholder: "New decision" %>
+            <%= f.submit %> 
+        </h3>
       </div>
-      <%= f.submit %>
+        
     <% end %>  
 
 
