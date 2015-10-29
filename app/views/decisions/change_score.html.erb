@@ -21,23 +21,36 @@
 				  </thead>
 				  <tbody>
 				    	<% @decision.options.each do |option| %>
+
 				    		<tr>
 				    			<td><%= option.name %> </td>
 					    		<% option.metrics.each  do |metric| %>
 									<%= fields_for metric do |u| %>
 										<% if factor.id == metric.factor_id %>
-											<%= u.hidden_field :id, value: metric.id, multiple: true %>
-											<td><input type="number" value="<%=metric.score %>" name="metric[score][]" id="metric_score"></td>
-										   	<% end %>
-										<% end %>	
+
+											<td>
+												
+
+												<input type="number" value="<%=metric.score %>" name="metric[score][]" id="metric_score">
+
+												<%= u.hidden_field :id, value: metric.id, multiple: true %>
+
+												
+
+											</td>
+
+										<% end %>
+									<% end %>	
 								<% end %>
 							</tr>
+
 						<% end %>
 				   </tbody>
 			 </table>	  
 
 		<% end %>
 		 <%= f.submit "Save" %>
+
 	<% end %>
 
 </div>

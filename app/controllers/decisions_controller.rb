@@ -91,11 +91,12 @@ class DecisionsController < ApplicationController
 
       @best_option = @ranked_options.first
 
+      #for charting:
       @max_points_for_options = @decision.max_points_for_options
-
       @ranked_option_names_array = ranked_option_names_array
-
       @winner_factor_labs = @decision.winner_factor_labs
+      @factor_max_labs = @decision.factor_max_labs
+      @winner_factor_scores = @decision.winner_factor_score
 
       render :result_summary
   end

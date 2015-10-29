@@ -25,7 +25,9 @@ this is result_summary
 			(Score of <%=@best_option.total_score%> / Max. of <%=@max_points_for_options %> )
 			<br>
 			<br>
-			<div style="width: 60%" id="best-option" data-factornames="<%= @winner_factor_labs %>"> 
+			<div style="width: 60%" id="best-option" data-factornames="<%= @winner_factor_labs %>" 
+				data-factormaxscore="<%= @factor_max_labs %>" data-winnerfactorscores="<%= @winner_factor_scores %>"> 
+
 				<canvas id="canvas-best-option" height="80" width="300"></canvas>
 			</div>
 

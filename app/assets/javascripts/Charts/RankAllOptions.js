@@ -33,33 +33,38 @@ window.onload = function(){
 	];
 
 		//grabbing the name of the factors from the controller via data-attribute in div	  	
-	var allFactorNames = $('#best-option').data('factornames');			
+	var allFactorNames = $('#best-option').data('factornames');	
+	var factorMaxScoreArray= $('#best-option').data('factormaxscore');
+	var winnerFactorScores= $('#best-option').data('winnerfactorscores');	
+
 	var barHorizChartData = {
 		  		labels : allFactorNames,
 
 		  		//this data is for the score of the factors of this option
 		  		datasets : [
 		  			{
-		  				fillColor : "rgba(220,220,220,0.5)",
-		  				strokeColor : "rgba(220,220,220,0.8)",
-		  				highlightFill: "rgba(220,220,220,0.75)",
-		  				highlightStroke: "rgba(220,220,220,1)",
-		  				data : [10,20,30]
-		  			},
-
-		  			//this data is for the max_score of the factors
-		  			{
 		  				fillColor : "rgba(151,187,205,0.5)",
 		  				strokeColor : "rgba(151,187,205,0.8)",
 		  				highlightFill : "rgba(151,187,205,0.75)",
 		  				highlightStroke : "rgba(151,187,205,1)",
-		  				data : [50,50,50]
+		  				data : winnerFactorScores
+		  			},
+
+		  			//this data is for the max_score of the factors
+		  			{
+		  				fillColor : "rgba(220,220,220,0.5)",
+		  				strokeColor : "rgba(220,220,220,0.8)",
+		  				highlightFill: "rgba(220,220,220,0.75)",
+		  				highlightStroke: "rgba(220,220,220,1)",
+		  				data : factorMaxScoreArray
 		  			}
 		  		]
 
 		  	};
 
-	//grabbing the name of the ranked options from the controller via data-attribute in div	  	
+	//*** for all option stack chart ***//	  	
+	//grabbing the name of the ranked options from the controller via data-attribute in div	  
+
 	var allOptionNames = $('#all-options').data('optionnames');
 
 	var barChartData = {

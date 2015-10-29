@@ -32,6 +32,23 @@ class Decision < ActiveRecord::Base
     	end
     end
 
+    #for charting of each factor's max score
+    def factor_max_labs
+    	factors.map do |factor|
+      		factor.max_score
+    	end
+    end
+
+    #for charting of winner's score
+    def winner_factor_score
+    	@winner = Decision.find(id).rank_options.first
+
+    	factors.map do |factor|
+      		@winner.metrics.find_by_factor_id(factor.id).score
+    	end
+    end
+
+
 	#does not work yet: need to revise
 	def score_by_factors_array
 	    @score_by_factors_master_array = []
