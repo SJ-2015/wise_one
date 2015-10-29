@@ -23,7 +23,7 @@ class Decision < ActiveRecord::Base
 	end
 
 	def rank_options
-		@ranke_options = options.order(total_score: :desc)
+		@rank_options = options.order(total_score: :desc)
 	end
 
 	def winner_factor_labs
@@ -52,25 +52,29 @@ class Decision < ActiveRecord::Base
 	#does not work yet: need to revise
 	def score_by_factors_array
 	    @score_by_factors_master_array = []
-	      #this is for result_summary page, so knows to grab @factors
 
-	    @factor_ids = Decision.find(id).factors.map(&:id)
+	    @factor_ids = Decision.find(1).factors.map(&:id)
+
+	    @rank_options = options.order(total_score: :desc)
 
 
 	    @factor_ids.each { |factor_id|
-	          #start with an empty factor_score array
-	          #for each factor, iterator all options 
-	          #grab the option.metrics with the matching factor_id, put into one factor_score_array
+	          # start with an empty factor_score array
+	          # for each factor, iterator all options 
+	          # grab the option.metrics with the matching factor_id, put into one factor_score_array
 	        temp_factor_score_array = []
 
-	            @ranked_options.each { |option|
-	              temp_score = Option.find(option.id).metrics.find_by_factor_id(factor_id).score
-	              temp_factor_score_array << temp_score
-	            }
+		            @rank_options.each { |option|
+		              temp_score = Option.find(option.id).metrics.find_by_factor_id(factor_id).score
+		              temp_factor_score_array << temp_score
+		            }
 
 	          #put the factor_score_arrarry into master array
 	        @score_by_factors_master_array << temp_factor_score_array
 	    } 
+
+	    @score_by_factors_master_array
+
 	end
 
 

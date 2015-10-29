@@ -5,8 +5,9 @@ class MetricsController < ApplicationController
     	@decision = Decision.find(decision_id)
     	@user = @decision.user
 
-    	@options = @decision.options
     	@factors = @decision.factors
+
+    	@options = @decision.options
 
 
     	render :index
