@@ -13,7 +13,7 @@ this is result_summary
 		<h4> What is Important to You</4>
 		<br>
 		<br>
-		<div  style="width: 70%" id="canvas-holder">
+		<div  style="width: 70%" id="canvas-holder" >
 			<canvas id="value-pie"  height="60" width="300"> </canvas>
 		</div>
 		<hr>
@@ -23,8 +23,9 @@ this is result_summary
 		<h4> Your Best Option is: 
 			<%= @best_option.name %> 
 			(Score of <%=@best_option.total_score%> / Max. of <%=@max_points_for_options %> )
-
-			<div style="width: 60%">
+			<br>
+			<br>
+			<div style="width: 60%" id="best-option" data-factornames="<%= @winner_factor_labs %>"> 
 				<canvas id="canvas-best-option" height="80" width="300"></canvas>
 			</div>
 
@@ -36,7 +37,7 @@ this is result_summary
 	<div>
 		<h4> How All the Options Compared</h4>
 		<br>
-		<div style="width: 70%">
+		<div style="width: 70%" id="all-options" data-optionnames="<%= @ranked_option_names_array %>">
 			<canvas id="canvas-all-options" height="60" width="300"></canvas>
 		</div>
 

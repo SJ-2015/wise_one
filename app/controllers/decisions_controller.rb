@@ -83,20 +83,31 @@ class DecisionsController < ApplicationController
   def result_summary
       id = params[:id]
       @decision = Decision.find(id)
-
       @user = @decision.user
       @factors = @decision.factors
 
       #rank all the options associated with the decision by highest score first
-      @ranked_options = @decision.options.order(total_score: :desc)
+      @ranked_options = @decision.rank_options
 
       @best_option = @ranked_options.first
 
       @max_points_for_options = @decision.max_points_for_options
 
-      render :result_summary
+      @ranked_option_names_array = ranked_option_names_array
 
+      @winner_factor_labs = @decision.winner_factor_labs
+
+      render :result_summary
   end
+
+  def ranked_option_names_array
+    @ranked_options.map do |option|
+      option.name
+    end
+  end
+
+
+
 
 end
 
