@@ -9,9 +9,12 @@
 
     <%= form_for @decision do |f| %>
       <div>
-        <%= f.text_field :name, placeholder: "New decision" %>
+        <h3>
+            <%= f.text_field :name, placeholder: "New decision" %>
+            <%= f.submit %> 
+        </h3>
+        <hr>
       </div>
-      <%= f.submit %>
     <% end %>  
 
 
@@ -20,15 +23,16 @@
       <h2> Current contemplating <%= @user.decisions.count%> decisions:</h2>
         <% @user.decisions.reverse.each do |decision| %>
           <p>
-          	<div class="decision-name">
-              <a><%=link_to decision.name, decision_path(decision), 'data-no-turbolink' => true%></a>
-            </div>  
+            	<div class="decision-name">
+                <h3>
+                  <%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_decision_path(decision), method: :get %>
 
-            <i class="fa fa-trash-o"> </i>     
-            <%= link_to 'Delete', decision, method: :delete, data: { confirm: 'Are you sure you want to delete this decision?' }, :class => "btn btn-danger" %>
+                  <a><%=link_to decision.name, decision_path(decision), 'data-no-turbolink' => true%>
+                  </a>
 
-            <i class="fa fa-pencil-square-o"></i>
-            <%= link_to "Edit Decision", edit_decision_path(decision), method: :get, :class => "btn btn-info" %>
+                  <%= link_to '<i class="fa fa-trash-o"> </i>'.html_safe, decision, method: :delete, data: { confirm: 'Are you sure you want to delete this decision?' }%>
+                </h3>
+              </div>  
           </p>
           <br>
         <% end %>
