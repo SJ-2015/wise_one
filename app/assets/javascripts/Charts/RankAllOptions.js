@@ -72,7 +72,7 @@ window.onload = function(){
 
 	var allOptionNames = $('#all-options').data('optionnames');
 	
-
+	//defined in decison model, passed over via data attribute from decision controller
 	var allScoreStacked = $('#all-options').data('allscorestacked');
 
 	var factorCount = allFactorNames.length;
