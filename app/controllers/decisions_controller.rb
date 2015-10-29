@@ -88,7 +88,7 @@ class DecisionsController < ApplicationController
       @factors = @decision.factors
 
       #rank all the options associated with the decision by highest score first
-      @ranked_options = @decision.options.order('total_score desc')
+      @ranked_options = @decision.options.order(total_score: :desc)
 
       @best_option = @ranked_options.first
 
