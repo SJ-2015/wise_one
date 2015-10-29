@@ -71,21 +71,26 @@ window.onload = function(){
 	//grabbing the name of the ranked options from the controller via data-attribute in div	  
 
 	var allOptionNames = $('#all-options').data('optionnames');
+	
+
+	var allScoreStacked = $('#all-options').data('allscorestacked');
+
 	var factorCount = allFactorNames.length;
+
 	var allOptionStackData = [
 				{
 					fillColor : "#F7464A",
 					strokeColor : "#F7464A",
 					highlightFill: "#FF5A5E",
 					highlightStroke: "#FF5A5E",
-					data : [500,20,30,40]
+					data : allScoreStacked[0]
 				},
 				{
 					fillColor : "#46BFBD",
 					strokeColor : "#46BFBD",
 					highlightFill : "#5AD3D1",
 					highlightStroke : "#5AD3D1",
-					data : [30,40,50,70]
+					data : allScoreStacked[1]
 				},
 				{
 					fillColor : "#FDB45C",
@@ -93,7 +98,7 @@ window.onload = function(){
 					highlightFill : "#FFC870",
 					highlightStroke : "#FFC870",
 					//set defaultdata to for now
-					data : [20,10,40,20]
+					data : allScoreStacked[2]
 				},
 				{
 					fillColor : "#949FB1",
@@ -101,7 +106,7 @@ window.onload = function(){
 					highlightFill : "#A8B3C5",
 					highlightStroke : "#A8B3C5",
 					//set defaultdata to for now
-					data : [20,10,40,20]
+					data : allScoreStacked[3]
 				},
 				{
 					fillColor : "#4D5360",
@@ -109,7 +114,7 @@ window.onload = function(){
 					highlightFill : "#616774",
 					highlightStroke : "#616774",
 					//set defaultdata to for now
-					data : [20,10,40,20]
+					data : allScoreStacked[4]
 				}
 			]
 

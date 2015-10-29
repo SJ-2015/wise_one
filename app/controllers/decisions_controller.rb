@@ -98,6 +98,7 @@ class DecisionsController < ApplicationController
       @winner_factor_labs = @decision.winner_factor_labs
       @factor_max_labs = @decision.factor_max_labs
       @winner_factor_scores = @decision.winner_factor_score
+      @score_by_factors_array = @decision.score_by_factors_array
 
       render :result_summary
   end

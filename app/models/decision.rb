@@ -49,11 +49,11 @@ class Decision < ActiveRecord::Base
     end
 
 
-	#does not work yet: need to revise
+	#gathering data array for chart js rendering of all stacked data
 	def score_by_factors_array
 	    @score_by_factors_master_array = []
 
-	    @factor_ids = Decision.find(1).factors.map(&:id)
+	    @factor_ids = Decision.find(id).factors.map(&:id)
 
 	    @rank_options = options.order(total_score: :desc)
 
@@ -65,16 +65,16 @@ class Decision < ActiveRecord::Base
 	        temp_factor_score_array = []
 
 		            @rank_options.each { |option|
-		              temp_score = Option.find(option.id).metrics.find_by_factor_id(factor_id).score
+		             temp_score = Option.find(option.id).metrics.find_by_factor_id(factor_id).score
+		             
+		             
 		              temp_factor_score_array << temp_score
 		            }
 
 	          #put the factor_score_arrarry into master array
 	        @score_by_factors_master_array << temp_factor_score_array
 	    } 
-
 	    @score_by_factors_master_array
-
 	end
 
 

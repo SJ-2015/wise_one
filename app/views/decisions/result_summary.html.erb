@@ -38,12 +38,13 @@
 	<div>
 		<h4> How All the Options Compared</h4>
 		<br>
-		<div style="width: 70%" id="all-options" data-optionnames="<%= @ranked_option_names_array %>">
+		<div style="width: 70%" id="all-options" data-optionnames="<%= @ranked_option_names_array %>" data-allscorestacked="<%= @score_by_factors_array %>">
 			<canvas id="canvas-all-options" height="60" width="300"></canvas>
 		</div>
 
 		<hr>
 	</div>
+
 
 	<div class="col-xs-6 factor-scor">
 		<div>
