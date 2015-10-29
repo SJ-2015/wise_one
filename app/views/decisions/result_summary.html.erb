@@ -9,22 +9,49 @@ this is result_summary
 	<h3 class="text-center">Assessment Summary</h3>
 
 	<div>
+		<hr>
 		<h4> What is Important to You</4>
+		<br>
+		<br>
+		<div  style="width: 70%" id="canvas-holder">
+			<canvas id="value-pie"  height="60" width="300"> </canvas>
+		</div>
 		<hr>
 	</div>
+
+
 
 	<div>
 		<h4> Your Best Option is: 
 			<%= @best_option.name %> 
 			(Score of <%=@best_option.total_score%> / Max. of <%=@max_points_for_options %> )
+
+			<div style="width: 60%">
+				<canvas id="canvas-best-option" height="80" width="300"></canvas>
+			</div>
+
 		</h4>
 		<hr>
 	</div>
 
+
+
+
+
+
+
 	<div>
-		<h4> How All the Options Compared</4>
+		<h4> How All the Options Compared</h4>
+		<br>
+		<div style="width: 70%">
+			<canvas id="canvas-all-options" height="60" width="300"></canvas>
+		</div>
+
 		<hr>
 	</div>
+
+
+
 
 	<div class="col-xs-6 factor-scor">
 		<div>

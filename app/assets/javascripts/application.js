@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require Charts/Chart
+//= require Charts/Chart.StackedBar
+//= require Charts/Chart.HorizontalBar
+//= require Charts/RankAllOptions
 //= require_tree .
