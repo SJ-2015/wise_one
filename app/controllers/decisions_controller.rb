@@ -76,6 +76,7 @@ class DecisionsController < ApplicationController
 
       @decision.tally_options
 
+      #binding.pry
 
       redirect_to decision_metrics_path(decision_id)
   end

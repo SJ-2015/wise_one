@@ -7,7 +7,9 @@ class Factor < ActiveRecord::Base
 	#add metrics associated with the new factor to existing options, take the max_score as default
     def add_metrics_to_existing_options
     	@factor_options = decision.options
+        
     	@factor_options.each do |option|
+          #should only create new metrics for new factor, not exiting  
           Metric.create(score:max_score, factor_id:id, option_id:option.id)
         end  
     end   

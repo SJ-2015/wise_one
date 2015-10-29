@@ -1,40 +1,45 @@
 window.onload = function(){
+
+	var allFactorNames = $('#best-option').data('factornames');	
+	var factorMaxScoreArray= $('#best-option').data('factormaxscore');
+
+	//value pie
 	var doughnutData = [
 		{
-			value: 300,
+			value: (!factorMaxScoreArray[0] ? 0 : factorMaxScoreArray[0]),
 			color:"#F7464A",
 			highlight: "#FF5A5E",
-			label: "Red"
+			label: (!allFactorNames[0] ? "" : allFactorNames[0])
 		},
 		{
-			value: 50,
+			value: (!factorMaxScoreArray[1] ? 0 : factorMaxScoreArray[1]),
 			color: "#46BFBD",
 			highlight: "#5AD3D1",
-			label: "Green"
+			label: (!allFactorNames[1] ? "" : allFactorNames[1])
 		},
 		{
-			value: 100,
+			value: (!factorMaxScoreArray[2] ? 0 : factorMaxScoreArray[2]),
 			color: "#FDB45C",
 			highlight: "#FFC870",
-			label: "Yellow"
+			label: (!allFactorNames[2] ? "" : allFactorNames[2])
 		},
 		{
-			value: 40,
+			value: (!factorMaxScoreArray[3] ? 0 : factorMaxScoreArray[3]),
 			color: "#949FB1",
 			highlight: "#A8B3C5",
-			label: "Grey"
+			label: (!allFactorNames[3] ? "" : allFactorNames[3])
 		},
 		{
-			value: 120,
+			value: (!factorMaxScoreArray[4] ? 0 : factorMaxScoreArray[4]),
 			color: "#4D5360",
 			highlight: "#616774",
-			label: "Dark Grey"
+			label: (!allFactorNames[4] ? "" : allFactorNames[4])
 		}
 	];
 
 		//grabbing the name of the factors from the controller via data-attribute in div	  	
-	var allFactorNames = $('#best-option').data('factornames');	
-	var factorMaxScoreArray= $('#best-option').data('factormaxscore');
+	
+	
 	var winnerFactorScores= $('#best-option').data('winnerfactorscores');	
 
 	var barHorizChartData = {
@@ -66,52 +71,53 @@ window.onload = function(){
 	//grabbing the name of the ranked options from the controller via data-attribute in div	  
 
 	var allOptionNames = $('#all-options').data('optionnames');
-
-	var barChartData = {
-			labels : allOptionNames,
-			datasets : [
+	var factorCount = allFactorNames.length;
+	var allOptionStackData = [
 				{
-					
-					fillColor : "rgba(220,220,220,0.5)",
-					strokeColor : "rgba(220,220,220,0.8)",
-					highlightFill: "rgba(220,220,220,0.75)",
-					highlightStroke: "rgba(220,220,220,1)",
-					//first data in array correspond to first option: array of all the first metric
-					// data array is [first option's first metric, second metric's first metric..]
-					//send as json or nested arrays:
-					//arraymaster of [ [all first metrics - all options], [all second metrics - all options], []]
-					// this one is arraymaster[0]
-					//iterator through factor_ids:
-					// for each factor, iterator all options 
-						//grab the option.metrics with the matching factor_id, put into one array
-						//add this array to master array
-
-					data : [100,20,30,40]
+					fillColor : "#F7464A",
+					strokeColor : "#F7464A",
+					highlightFill: "#FF5A5E",
+					highlightStroke: "#FF5A5E",
+					data : [500,20,30,40]
 				},
 				{
-				
-					fillColor : "rgba(151,187,205,0.5)",
-					strokeColor : "rgba(151,187,205,0.8)",
-					highlightFill : "rgba(151,187,205,0.75)",
-					highlightStroke : "rgba(151,187,205,1)",
+					fillColor : "#46BFBD",
+					strokeColor : "#46BFBD",
+					highlightFill : "#5AD3D1",
+					highlightStroke : "#5AD3D1",
 					data : [30,40,50,70]
 				},
 				{
-				
-					fillColor : "rgba(240,73,73,0.5)",
-					strokeColor : "rgba(240,73,73,0.8)",
-					highlightFill : "rgba(240,73,73,0.75)",
-					highlightStroke : "rgba(240,73,73,1)",
-					data : [200,40,50,70]
+					fillColor : "#FDB45C",
+					strokeColor : "#FDB45C",
+					highlightFill : "#FFC870",
+					highlightStroke : "#FFC870",
+					//set defaultdata to for now
+					data : [20,10,40,20]
+				},
+				{
+					fillColor : "#949FB1",
+					strokeColor : "#949FB1",
+					highlightFill : "#A8B3C5",
+					highlightStroke : "#A8B3C5",
+					//set defaultdata to for now
+					data : [20,10,40,20]
+				},
+				{
+					fillColor : "#4D5360",
+					strokeColor : "#4D5360",
+					highlightFill : "#616774",
+					highlightStroke : "#616774",
+					//set defaultdata to for now
+					data : [20,10,40,20]
 				}
 			]
+
+	var barChartData = {
+			labels : allOptionNames,
+			//dataset has default color, but color set beyond factor count is not used
+			datasets : allOptionStackData.splice(0,factorCount)
 		};
-
-
-
-
-
-
 	
 
 		var ctxa = document.getElementById("value-pie").getContext("2d");

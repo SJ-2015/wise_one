@@ -7,6 +7,4 @@ class Metric < ActiveRecord::Base
 	end
 
 
-	## do a before action: before save metric, total option score update
-
 end
