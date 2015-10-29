@@ -20,7 +20,6 @@ Rails.application.routes.draw do
       get 'change_score'
       patch 'update_score'
       get 'result_summary'
-      get 'result_details'
     end
   	resources :options
   	resources :factors

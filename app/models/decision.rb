@@ -9,6 +9,21 @@ class Decision < ActiveRecord::Base
 
 
 	def find_winner
-		high_score = maximum(options.totalscore)
+		
 	end
+
+	def tally_options
+		#find each option associated with the decision
+
+		#update the total_score for each of option, using method in option_model
+		@options = Decision.find(id).options
+		@options.each { |option|
+			option.update_total_score
+		}
+	end
+
+	def max_points_for_option
+		@max_points_for_options = factors.sum(:max_score)
+	end
+
 end

@@ -23,7 +23,8 @@ class Option < ActiveRecord::Base
 	end
 
 	def update_total_score
-		@total_score=metrics.sum(:score)
+		total_score=metrics.sum(:score)
+		Option.find(id).update(total_score:total_score)
 	end	
 
 		

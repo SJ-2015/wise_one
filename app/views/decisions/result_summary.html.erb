@@ -14,7 +14,10 @@ this is result_summary
 	</div>
 
 	<div>
-		<h4> Your Best Option is:</4>
+		<h4> Your Best Option is: 
+			<%= @best_option.name %> 
+			(Score of <%=@best_option.total_score%> / Max. of <%=@max_points_for_options %> )
+		</h4>
 		<hr>
 	</div>
 
@@ -23,6 +26,16 @@ this is result_summary
 		<hr>
 	</div>
 
+	<div class="col-xs-6 factor-scor">
+		<div>
+		 <%= link_to "Back: Edit Option Ranking", change_score_decision_path(@decision.id), method: :get, :class => "btn btn-info" %>
+		</div>
+	</div>
 
+	<div class="col-xs-6 factor-scor">
+		<div>
+		  <%= link_to "See Detailed Comparison", decision_metrics_path(@decision), method: :get, :class => "btn btn-info" %>
+		</div>
+	</div>
 
 </div>

@@ -73,6 +73,10 @@ class DecisionsController < ApplicationController
       }
 
       Metric.update(@metric_ids,@score_hash_array)
+
+      @decision.tally_options
+
+
       redirect_to decision_metrics_path(decision_id)
   end
 
@@ -82,17 +86,16 @@ class DecisionsController < ApplicationController
 
       @user = @decision.user
       @factors = @decision.factors
+
+      #rank all the options associated with the decision by highest score first
+      @ranked_options = @decision.options.order('total_score desc')
+
+      @best_option = @ranked_options.first
+
+      @max_points_for_options = @decision.max_points_for_option
+
       render :result_summary
 
-  end
-
-  def result_details
-      id = params[:id]
-      @decision = Decision.find(id)
-
-      @user = @decision.user
-      @factors = @decision.factors
-      render :result_details
   end
 
 end
