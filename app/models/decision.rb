@@ -22,7 +22,7 @@ class Decision < ActiveRecord::Base
 		}
 	end
 
-	def max_points_for_option
+	def max_points_for_options
 		@max_points_for_options = factors.sum(:max_score)
 	end
 

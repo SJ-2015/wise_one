@@ -92,7 +92,7 @@ class DecisionsController < ApplicationController
 
       @best_option = @ranked_options.first
 
-      @max_points_for_options = @decision.max_points_for_option
+      @max_points_for_options = @decision.max_points_for_options
 
       render :result_summary
 
