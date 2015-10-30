@@ -1,0 +1,38 @@
+
+<div class="modal-dialog flip-wrapper">
+  <div class="modal-content flip active" id="loginFlip">
+    <div class="modal-body">
+      <header class="header">
+
+        <p class="title">Edit Profile</p>
+      </header>
+      <div class="alert alert-danger hide" id="errorWrapperLogin"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>
+      <div class="form-controls">
+        <div class="line-form-separator"></div>
+        <div class="form-group">
+        <%=form_for @user, :html => { :multipart => true } do |f|%>
+        	<% if @user.errors.any? %>
+        	    <div id="error_explanation">
+        	      <h2><%= pluralize(@user.errors.count, "error") %> prohibited edit:</h2>
+        	      <ul>
+        	      <% @user.errors.full_messages.each do |msg| %>
+        	        <li><%= msg %></li>
+        	    </div>
+        	      <% end %>
+        	<% end %>
+            <%= f.text_field :first_name, placeholder: "First Name", :class => "form-control" %><br>
+            <%= f.text_field :last_name, placeholder: "Last Name", :class => "form-control" %><br>
+            <%= f.text_field :email, placeholder: "Email", :class => "form-control" %><br>
+            <%= f.text_field :age, placeholder: "Age" %>
+            <%=f.select :gender, ["Male", "Female", "Not Into Labels"], :prompt => "Change Gender", :class => "form-control"%>
+
+          <div class="form-group">
+            <%= f.submit "Update Profile", :class => "btn-primary btn-block" %>
+          </div>
+          <%end%>
+       </div>
+    </div>
+  </div>
+</div>
+
+
